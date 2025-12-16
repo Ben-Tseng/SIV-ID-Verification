@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///Users/bentseng/Downloads/deepseek_html_20251215_1ad1e4.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯白文本输入</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 设置纯白背景 */
+        body {
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #333;
+        }
+        
+        /* 主容器 */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* 标题样式 */
+        h1 {
+            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+        
+        /* 文本输入区域 */
+        .text-input {
+            width: 100%;
+            height: 300px;
+            padding: 25px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            resize: none;
+            border: none;
+            outline: none;
+            background-color: #f9f9f9;
+            color: #333;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        /* 输入区域获得焦点时的效果 */
+        .text-input:focus {
+            background-color: #f5f5f5;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* 底部提示信息 */
+        .info {
+            margin-top: 25px;
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* 字符计数 */
+        .char-count {
+            margin-top: 15px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .text-input {
+                height: 250px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .text-input {
+                height: 200px;
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>这是一个测试框</h1>
+        <textarea class="text-input" id="textInput" placeholder="MRZ:E83883744&#10;HK ID:K562504&#10;TW ID:G12136764"></textarea>
+        <div class="char-count" id="charCount">字符数: 27</div>
+        <div class="info">
+            <p>用于测试IDV插件的功能</p>
+        </div>
+    </div>
+
+    <script>
+        // 获取DOM元素
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        
+        // 加载之前保存的文本
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedText = localStorage.getItem('whitePageText');
+            if (savedText) {
+                textInput.value = savedText;
+                updateCharCount();
+            }
+            
+            // 自动聚焦到文本输入框
+            textInput.focus();
+        });
+        
+        // 更新字符计数
+        function updateCharCount() {
+            const count = textInput.value.length;
+            charCount.textContent = `字符数: ${count}`;
+        }
+        
+        // 实时保存文本并更新计数
+        textInput.addEventListener('input', () => {
+            localStorage.setItem('whitePageText', textInput.value);
+            updateCharCount();
+        });
+        
+        // 添加键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + S 保存
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                alert('内容已自动保存！');
+            }
+            
+            // Ctrl/Cmd + A 全选
+            if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+                // 允许默认行为
+            }
+            
+            // ESC 清空输入框
+            if (e.key === 'Escape') {
+                if (confirm('确定要清空所有文本吗？')) {
+                    textInput.value = '';
+                    localStorage.removeItem('whitePageText');
+                    updateCharCount();
+                    textInput.focus();
+                }
+            }
+        });
+        
+        // 初始更新字符计数
+        updateCharCount();
+    </script>
+
+</body></html>
