@@ -1,7 +1,7 @@
 https://chromewebstore.google.com/detail/lightweight-kyc-validator/ojmejpmlpghbdnkgafipadelkocajlgb
 
 # RCO-Local-Validation-Tools
-Passport MRZ, HK ID, TW ID and Chinese ID verification assisted tool
+Passport MRZ, HK ID, and TW ID verification assisted tool
 
 Overview
 
@@ -45,13 +45,3 @@ Gender digit
 Checksum calculation
 
 Fully aligned with Taiwan ID validation standards
-
-4. China Mainland ID — Date Consistency Validation
-
-Extracts Date of Birth from Mainland China ID numbers
-
-Compares DOB against document issue date
-
-Detects logical inconsistencies (e.g. issue date earlier than DOB)
-
-Intended as a rule‑based sanity check rather than identity confirmation
