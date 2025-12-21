@@ -1,3 +1,5 @@
+Open the doc 'tool show.gif' to watch how it works.
+
 https://chromewebstore.google.com/detail/lightweight-kyc-validator/ojmejpmlpghbdnkgafipadelkocajlgb
 
 # RCO-Local-Validation-Tools
