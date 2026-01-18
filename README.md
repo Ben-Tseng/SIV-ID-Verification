@@ -2,7 +2,7 @@ Open the doc 'tool show.gif' to watch how it works.
 
 https://chromewebstore.google.com/detail/lightweight-kyc-validator/ojmejpmlpghbdnkgafipadelkocajlgb
 
-# RCO-Local-Validation-Tools
+# SIV-ID-Verification
 Passport MRZ, HK ID, and TW ID verification assisted tool
 
 Overview
